@@ -1,0 +1,12 @@
+{
+    "topologyConfPath": "conf/topologies/lab3-topology.json",
+
+    "outputFile": "bohdan/lab3-topology",
+    "outputDir": "results",
+    "outputFormat": "csv",
+
+    "maxVerticesQuantity": 2000,
+
+    "consoleOutput": true,
+    "fileOutput": true
+}
