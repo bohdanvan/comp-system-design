@@ -4,24 +4,9 @@ package com.bvan.cs.core.topology;
  * @author bvanchuhov
  */
 public class TopologyProperties {
-    /**
-     * n
-     */
     private int vertices;
-
-    /**
-     * D
-     */
     private int diameter;
-
-    /**
-     * D*
-     */
     private double averageDiameter;
-
-    /**
-     * S
-     */
     private int degree;
 
     public int getVertices() {
@@ -60,18 +45,10 @@ public class TopologyProperties {
         return this;
     }
 
-    /**
-     * C = D * n * S
-     * @return C
-     */
     public int getPrice() {
         return diameter * vertices * degree;
     }
 
-    /**
-     * T = 2 * D* / S
-     * @return T
-     */
     public double getTopologicalTraffic() {
         return 2 * averageDiameter / degree;
     }
