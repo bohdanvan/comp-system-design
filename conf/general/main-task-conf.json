@@ -1,7 +1,7 @@
 {
-    "topologyConfPath": "conf/topologies/lab3-topology.json",
+    "topologyConfPath": "conf/topologies/lab1-topology.json",
 
-    "outputFile": "bohdan/lab3-topology",
+    "outputFile": "lab1-topology",
     "outputDir": "results",
     "outputFormat": "csv",
 
