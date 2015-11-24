@@ -5,7 +5,7 @@
     "outputDir": "results",
     "outputFormat": "csv",
 
-    "maxVerticesQuantity": 2000,
+    "maxVerticesQuantity": 500,
 
     "consoleOutput": true,
     "fileOutput": true
