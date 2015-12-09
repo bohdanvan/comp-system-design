@@ -31,8 +31,10 @@ public final class JsonTopologyFactory {
                 return (T) createTreeLevelLinearTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
             case "tree-level-ring":
                 return (T) createTreeLevelRingTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
-            case "tree-level-pair":
-                return (T) creteTreeLevelPairTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
+            case "tree-level-pair-linear":case "tree-level-pair":
+                return (T) creteTreeLevelPairLinearTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
+            case "tree-level-pair-ring":
+                return (T) createTreeLevelPairRingTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
             case "grid":
                 return (T) createGridTopology(new Gson().fromJson(json, GridConfBean.class));
             case "mesh":
@@ -50,10 +52,10 @@ public final class JsonTopologyFactory {
         return TopologyFactory.linearTopology(confBean.getCluster(), confBean.getClusterAdjacencyMap());
     }
 
-
     private static LinearTopology createRingTopology(LinearConfBean confBean) {
         return TopologyFactory.ringTopology(confBean.getCluster(), confBean.getClusterAdjacencyMap());
     }
+
 
     private static TreeTopology createTreeTopology(TreeConfBean confBean) {
         TreeTopology topology = new TreeTopology();
@@ -73,8 +75,14 @@ public final class JsonTopologyFactory {
         return topology;
     }
 
-    private static TreeLevelPairTopology creteTreeLevelPairTopology(TreeWithLevelConfBean confBean) {
-        TreeLevelPairTopology topology = TopologyFactory.treeLevelPairTopology();
+    private static TreeLevelPairTopology creteTreeLevelPairLinearTopology(TreeWithLevelConfBean confBean) {
+        TreeLevelPairTopology topology = TopologyFactory.treeLevelPairLinearTopology();
+        initTreeWithLevelTopology(topology, confBean);
+        return topology;
+    }
+
+    private static TreeTopology createTreeLevelPairRingTopology(TreeWithLevelConfBean confBean) {
+        TreeLevelPairTopology topology = TopologyFactory.treeLevelPairRingTopology();
         initTreeWithLevelTopology(topology, confBean);
         return topology;
     }
