@@ -47,28 +47,20 @@ public final class TopologyFactory {
         return new LinearTopology(ringAdjaster());
     }
 
-    public static TreeLevelLinearTopology treeLevelLinearTopology(Topology cluster, List<AdjacencyMap> childrenAdjacencyMaps, AdjacencyMap levelAdjacencyMap) {
-        return new TreeLevelLinearTopology(cluster, childrenAdjacencyMaps, levelAdjacencyMap, linearAdjaster());
-    }
-
     public static TreeLevelLinearTopology treeLevelLinearTopology() {
         return new TreeLevelLinearTopology(linearAdjaster());
-    }
-
-    public static TreeLevelLinearTopology treeLevelRingTopology(Topology cluster, List<AdjacencyMap> childrenAdjacencyMaps, AdjacencyMap levelAdjacencyMap) {
-        return new TreeLevelLinearTopology(cluster, childrenAdjacencyMaps, levelAdjacencyMap, ringAdjaster());
     }
 
     public static TreeLevelLinearTopology treeLevelRingTopology() {
         return new TreeLevelLinearTopology(ringAdjaster());
     }
 
-    public static TreeLevelPairTopology treeLevelPairTopology(Topology cluster, List<AdjacencyMap> childrenAdjacencyMaps, AdjacencyMap levelAdjacencyMap) {
-        return new TreeLevelPairTopology(cluster, childrenAdjacencyMaps, levelAdjacencyMap);
+    public static TreeLevelPairTopology treeLevelPairLinearTopology() {
+        return new TreeLevelPairTopology(linearAdjaster());
     }
 
-    public static TreeLevelPairTopology treeLevelPairTopology() {
-        return new TreeLevelPairTopology();
+    public static TreeLevelPairTopology treeLevelPairRingTopology() {
+        return new TreeLevelPairTopology(ringAdjaster());
     }
 
     public static GridTopology gridTopology() {

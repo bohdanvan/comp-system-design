@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 /**
  * @author bvanchuhov
  */
-public class TreeLevelPairTopologyTest {
+public class TreeLevelPairLinearTopologyTest {
     private ClusterBasedTopology topology;
 
     @Before
@@ -24,7 +24,7 @@ public class TreeLevelPairTopologyTest {
     }
 
     private static ClusterBasedTopology create() {
-        TreeLevelPairTopology topology = new TreeLevelPairTopology();
+        TreeLevelPairTopology topology = TopologyFactory.treeLevelPairLinearTopology();
         topology.setCluster(TopologyFactory.simpleCluster());
         topology.setLevelAdjacencyMap(TopologyFactory.simpleAdjacencyMap());
         topology.setChildrenAdjacencyMaps(Arrays.asList(

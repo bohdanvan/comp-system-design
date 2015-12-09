@@ -15,16 +15,8 @@ import java.util.List;
  * @author bvanchuhov
  */
 public class TreeLevelLinearTopology extends TreeWithLevelTopology {
-    protected Adjaster levelAdjaster;
-
-    public TreeLevelLinearTopology(Topology cluster, List<AdjacencyMap> childrenAdjacencyMaps, AdjacencyMap levelAdjacencyMap, Adjaster levelAdjaster) {
-        super(cluster, childrenAdjacencyMaps, levelAdjacencyMap);
-        this.levelAdjaster = Requirements.requiredNotNullArg(levelAdjaster);
-    }
-
     public TreeLevelLinearTopology(Adjaster levelAdjaster) {
-        super();
-        this.levelAdjaster = Requirements.requiredNotNullArg(levelAdjaster);
+        super(levelAdjaster);
     }
 
     @Override
