@@ -21,11 +21,14 @@ public class MainTaskConf {
     @SerializedName("maxVerticesQuantity")
     private int maxVerticesQuantity;
 
+    @SerializedName("maxVerticesForMinDistanceOutput")
+    private int maxVerticesForMinDistanceOutput = -1;
+
     @SerializedName("consoleOutput")
-    private boolean consoleOutput;
+    private boolean consoleOutput = false;
 
     @SerializedName("fileOutput")
-    private boolean fileOutput;
+    private boolean fileOutput = false;
 
     public String getTopologyConfPath() {
         return topologyConfPath;
@@ -45,6 +48,10 @@ public class MainTaskConf {
 
     public int getMaxVerticesQuantity() {
         return maxVerticesQuantity;
+    }
+
+    public int getMaxVerticesForMinDistanceOutput() {
+        return maxVerticesForMinDistanceOutput;
     }
 
     public boolean isConsoleOutput() {

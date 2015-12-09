@@ -27,10 +27,16 @@ public class MainTask {
     public void doTask() {
         ClusterBasedTopology topology = getClusterBasedTopology();
 
-        List<TopologyProperties> topologyProperties = new ExperimentTask(topology, conf.getMaxVerticesQuantity()).doTask();
+        List<TopologyProperties> topologyProperties = createExperimentTask(topology).doTask();
 
         outputResult(topologyProperties);
     }
+
+    private ExperimentTask createExperimentTask(ClusterBasedTopology topology) {
+        return new ExperimentTask(topology, conf.getMaxVerticesQuantity())
+                .setMaxVerticesForMinDistanceOutput(conf.getMaxVerticesForMinDistanceOutput());
+    }
+
 
     private void outputResult(List<TopologyProperties> topologyProperties) {
         String result = toOutputForm(topologyProperties);
