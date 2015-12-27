@@ -31,7 +31,7 @@ public abstract class TopologyImpl implements Topology {
 
         TopologyProperties topologyProperties = new TopologyProperties();
         topologyProperties
-                .setVertices(getVerticesQuantity())
+                .setNodes(getNodes())
                 .setDegree(GraphUtils.degree(adjacencyMatrix))
                 .setDiameter(GraphUtils.diameter(minDistancesMatrix))
                 .setAverageDiameter(GraphUtils.averageDiameter(minDistancesMatrix));

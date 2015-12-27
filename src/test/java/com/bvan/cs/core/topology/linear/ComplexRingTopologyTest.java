@@ -29,8 +29,8 @@ public class ComplexRingTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(6));
-        assertThat(graph.getVerticesQuantity(), is(6));
+        assertThat(topology.getNodes(), is(6));
+        assertThat(graph.getNodes(), is(6));
 
         assertThat(graph.getAdjacents(0), containsInAnyOrder(1, 2, 3));
         assertThat(graph.getAdjacents(1), containsInAnyOrder(0, 2, 4));
@@ -48,8 +48,8 @@ public class ComplexRingTopologyTest {
 
         System.out.println(graph);
 
-        assertThat(topology.getVerticesQuantity(), is(12));
-        assertThat(graph.getVerticesQuantity(), is (12));
+        assertThat(topology.getNodes(), is(12));
+        assertThat(graph.getNodes(), is (12));
 
         assertThat(graph.getAdjacents(0), containsInAnyOrder(1, 2, 3, 8));
         assertThat(graph.getAdjacents(1), containsInAnyOrder(0, 2, 4, 7));

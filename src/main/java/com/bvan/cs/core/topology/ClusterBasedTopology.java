@@ -27,8 +27,8 @@ public abstract class ClusterBasedTopology extends TopologyImpl {
     }
 
     @Override
-    public int getVerticesQuantity() {
-        return getClustersQuantity() * cluster.getVerticesQuantity();
+    public int getNodes() {
+        return getClustersQuantity() * cluster.getNodes();
     }
 
     @Override
@@ -42,11 +42,11 @@ public abstract class ClusterBasedTopology extends TopologyImpl {
     private Graph duplicateCluster() {
         int clustersQuantity = getClustersQuantity();
 
-        Graph graph = GraphFactory.create(getVerticesQuantity());
+        Graph graph = GraphFactory.create(getNodes());
 
-        int clusterVerticesQuantity = cluster.getVerticesQuantity();
+        int clusterNodes = cluster.getNodes();
         Graph clusterGraph = cluster.getGraph();
-        for (int clusterStartVertex = 0; clusterStartVertex < clusterVerticesQuantity; clusterStartVertex++) {
+        for (int clusterStartVertex = 0; clusterStartVertex < clusterNodes; clusterStartVertex++) {
             for (Integer clusterFinishVertex : clusterGraph.getAdjacents(clusterStartVertex)) {
                 for (int clusterIndex = 0; clusterIndex < clustersQuantity; clusterIndex++) {
                     int startVertex = getVertexIndex(clusterIndex, clusterStartVertex);
@@ -73,13 +73,13 @@ public abstract class ClusterBasedTopology extends TopologyImpl {
     }
 
     private Graph adjustClusters(Graph graph, Tuple<Integer> adjustedCluster, AdjacencyMap adjacencyMap) {
-        int clusterVerticesQuantity = cluster.getVerticesQuantity();
+        int clusterNodes = cluster.getNodes();
 
-        for (int clusterAVertex = 0; clusterAVertex < clusterVerticesQuantity; clusterAVertex++) {
-            Set<Integer> clusterBVertices = adjacencyMap.getAdjacents(clusterAVertex);
+        for (int clusterAVertex = 0; clusterAVertex < clusterNodes; clusterAVertex++) {
+            Set<Integer> clusterBNodeIds = adjacencyMap.getAdjacents(clusterAVertex);
 
-            if (clusterBVertices != null && !clusterBVertices.isEmpty()) {
-                for (Integer clusterBVertex : clusterBVertices) {
+            if (clusterBNodeIds != null && !clusterBNodeIds.isEmpty()) {
+                for (Integer clusterBVertex : clusterBNodeIds) {
                     int startVertex = getVertexIndex(adjustedCluster.getLeft(), clusterAVertex);
                     int finishVertex = getVertexIndex(adjustedCluster.getRight(), clusterBVertex);
 
@@ -98,11 +98,11 @@ public abstract class ClusterBasedTopology extends TopologyImpl {
     }
 
     protected int getVertexIndex(int clusterIndex, int clusterVertex) {
-        return clusterIndex * cluster.getVerticesQuantity() + clusterVertex;
+        return clusterIndex * cluster.getNodes() + clusterVertex;
     }
 
     public void setLevel(int level) {
-        setLevel0(Requirements.requiredNotNegativeArg(level, "level must be >= 0"));
+        setLevel0(Requirements.requiredNotNegativeArg(level, "level"));
         clearCache();
     }
 

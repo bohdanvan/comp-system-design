@@ -40,9 +40,9 @@ public class TreeTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(1));
+        assertThat(topology.getNodes(), is(1));
 
-        assertThat(graph.getVerticesQuantity(), is(1));
+        assertThat(graph.getNodes(), is(1));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class TreeTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(3));
+        assertThat(topology.getNodes(), is(3));
         System.out.println(graph);
 
         assertThat(graph.getAdjacents(0), containsInAnyOrder(1, 2));
@@ -65,7 +65,7 @@ public class TreeTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(7));
+        assertThat(topology.getNodes(), is(7));
 
         assertThat(graph.getAdjacents(0), containsInAnyOrder(1, 2));
         assertThat(graph.getAdjacents(1), containsInAnyOrder(0, 3, 4));

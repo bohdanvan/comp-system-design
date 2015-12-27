@@ -39,7 +39,7 @@ public class TreeLevelRingTopologyTest {
     public void testClusters1() throws Exception {
         topology.setLevel(0);
 
-        assertThat(topology.getVerticesQuantity(), is(1));
+        assertThat(topology.getNodes(), is(1));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class TreeLevelRingTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(3));
+        assertThat(topology.getNodes(), is(3));
 
         assertThat(graph.getAdjacents(0), containsInAnyOrder(1, 2));
         assertThat(graph.getAdjacents(1), containsInAnyOrder(0, 2));
@@ -61,7 +61,7 @@ public class TreeLevelRingTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(7));
+        assertThat(topology.getNodes(), is(7));
 
         assertThat(graph.getAdjacents(0), containsInAnyOrder(1, 2));
         assertThat(graph.getAdjacents(1), containsInAnyOrder(0, 2, 3, 4));

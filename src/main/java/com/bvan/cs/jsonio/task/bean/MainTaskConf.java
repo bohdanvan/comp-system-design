@@ -18,11 +18,11 @@ public class MainTaskConf {
     @SerializedName("outputFormat")
     private String outputFormat;
 
-    @SerializedName("maxVerticesQuantity")
-    private int maxVerticesQuantity;
+    @SerializedName("maxNodes")
+    private int maxNodes;
 
-    @SerializedName("maxVerticesForMinDistanceOutput")
-    private int maxVerticesForMinDistanceOutput = -1;
+    @SerializedName("maxNodesForMinDistanceOutput")
+    private int maxNodesForMinDistanceOutput = -1;
 
     @SerializedName("consoleOutput")
     private boolean consoleOutput = false;
@@ -46,12 +46,12 @@ public class MainTaskConf {
         return outputFormat;
     }
 
-    public int getMaxVerticesQuantity() {
-        return maxVerticesQuantity;
+    public int getMaxNodes() {
+        return maxNodes;
     }
 
-    public int getMaxVerticesForMinDistanceOutput() {
-        return maxVerticesForMinDistanceOutput;
+    public int getMaxNodesForMinDistanceOutput() {
+        return maxNodesForMinDistanceOutput;
     }
 
     public boolean isConsoleOutput() {

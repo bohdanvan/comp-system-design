@@ -2,7 +2,6 @@ package com.bvan.cs.jsonio.topology.bean;
 
 import com.bvan.cs.core.AdjacencyMap;
 import com.bvan.cs.core.topology.Cluster;
-import com.bvan.cs.core.topology.ClusterBasedTopology;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Map;

@@ -12,22 +12,22 @@ import java.util.List;
  */
 public class ExperimentTask {
     private ClusterBasedTopology topology;
-    private int maxVerticesQuantity;
-    private int maxVerticesForMinDistanceOutput = -1;
+    private int maxNodes;
+    private int maxNodesForMinDistanceOutput = -1;
 
-    public ExperimentTask(ClusterBasedTopology topology, int maxVerticesQuantity) {
+    public ExperimentTask(ClusterBasedTopology topology, int maxNodes) {
         this.topology = topology;
-        this.maxVerticesQuantity = maxVerticesQuantity;
+        this.maxNodes = maxNodes;
     }
 
     public List<TopologyProperties> doTask() {
         List<TopologyProperties> propertiesList = new ArrayList<>();
 
         topology.setLevel(0);
-        while (topology.getVerticesQuantity() <= maxVerticesQuantity) {
-            System.out.printf("Process...   n = %7d%n", topology.getVerticesQuantity());
+        while (topology.getNodes() <= maxNodes) {
+            System.out.printf("Process...   n = %7d%n", topology.getNodes());
 
-            if (topology.getVerticesQuantity() <= maxVerticesForMinDistanceOutput) {
+            if (topology.getNodes() <= maxNodesForMinDistanceOutput) {
                 System.out.println("Min distance matrix");
                 OutputUtils.printMatrix(topology.getMinDistancesMatrix());
             }
@@ -39,8 +39,8 @@ public class ExperimentTask {
         return propertiesList;
     }
 
-    public ExperimentTask setMaxVerticesForMinDistanceOutput(int maxVerticesForMinDistanceOutput) {
-        this.maxVerticesForMinDistanceOutput = maxVerticesForMinDistanceOutput;
+    public ExperimentTask setMaxNodesForMinDistanceOutput(int maxNodesForMinDistanceOutput) {
+        this.maxNodesForMinDistanceOutput = maxNodesForMinDistanceOutput;
         return this;
     }
 }

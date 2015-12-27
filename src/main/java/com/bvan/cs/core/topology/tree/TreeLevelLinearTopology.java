@@ -1,12 +1,9 @@
 package com.bvan.cs.core.topology.tree;
 
 import com.bvan.cs.core.Adjacency;
-import com.bvan.cs.core.AdjacencyMap;
 import com.bvan.cs.core.adjaster.Adjaster;
-import com.bvan.cs.core.topology.Topology;
 import com.bvan.common.Tuple;
-import com.bvan.cs.core.util.TreeUtils;
-import com.bvan.requirements.Requirements;
+import com.bvan.cs.core.util.tree.TreeUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,8 +23,8 @@ public class TreeLevelLinearTopology extends TreeWithLevelTopology {
         List<Tuple<Integer>> adjustedClusters = new LinkedList<>();
         int treeDegree = getTreeDegree();
         for (int level = getLevel(); level >= 0; level--) {
-            int levelFirstNode = TreeUtils.levelFirstNode(level, treeDegree);
-            int levelLastNode = TreeUtils.levelLastNode(level, treeDegree);
+            int levelFirstNode = TreeUtils.levelFirstNodeId(level, treeDegree);
+            int levelLastNode = TreeUtils.levelLastNodeId(level, treeDegree);
 
             List<Tuple<Integer>> levelAdjustedClusters = levelAdjaster.adjustPairs(levelFirstNode, levelLastNode + 1);
             adjustedClusters.addAll(levelAdjustedClusters);

@@ -1,12 +1,12 @@
 {
-    "topologyConfPath": "conf/topologies/lab1-topology.json",
+    "topologyConfPath": "conf/topologies/lesya-lab3-topology.json",
 
-    "outputFile": "lab1-topology",
-    "outputDir": "results",
+    "outputFile": "lab3-topology",
+    "outputDir": "results/lesya",
     "outputFormat": "csv",
 
-    "maxVerticesQuantity": 500,
+    "maxNodes": 500,
 
     "consoleOutput": true,
-    "fileOutput": true
+    "fileOutput": false
 }

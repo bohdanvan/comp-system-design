@@ -10,8 +10,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.bvan.cs.core.util.GridUtils.colNodes;
-import static com.bvan.cs.core.util.GridUtils.rowNodes;
+import static com.bvan.cs.core.util.grid.GridUtils.colNodes;
+import static com.bvan.cs.core.util.grid.GridUtils.rowNodes;
 import static com.bvan.requirements.Requirements.requiredNotNullArg;
 
 /**

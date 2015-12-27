@@ -34,8 +34,8 @@ public class RingTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(1));
-        assertThat(graph.getVerticesQuantity(), is(1));
+        assertThat(topology.getNodes(), is(1));
+        assertThat(graph.getNodes(), is(1));
     }
 
     @Test

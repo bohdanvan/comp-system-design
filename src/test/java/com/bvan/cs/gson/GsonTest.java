@@ -20,7 +20,7 @@ public class GsonTest {
     private static final String jsonString = "{\n" +
             "  \"type\": \"ring\",\n" +
             "  \"cluster\": {\n" +
-            "    \"verticesQuantity\": 6,\n" +
+            "    \"nodes\": 6,\n" +
             "    \"adjacencyMap\": {\n" +
             "      \"0\": [1, 2, 3],\n" +
             "      \"1\": [0, 2, 4],\n" +

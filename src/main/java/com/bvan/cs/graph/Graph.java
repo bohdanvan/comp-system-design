@@ -6,7 +6,7 @@ import java.util.List;
  * @author bvanchuhov
  */
 public interface Graph {
-    int getVerticesQuantity();
+    int getNodes();
     int getEdgesQuantity();
 
     Graph addEdge(int start, int finish);

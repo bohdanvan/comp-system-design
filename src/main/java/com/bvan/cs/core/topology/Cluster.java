@@ -8,18 +8,18 @@ import com.bvan.cs.graph.GraphFactory;
  * @author bvanchuhov
  */
 public class Cluster extends TopologyImpl {
-    private final int verticesQuantity;
+    private final int nodes;
 
-    public Cluster(int verticesQuantity, AdjacencyMap adjacencyMap) {
-        this.verticesQuantity = verticesQuantity;
+    public Cluster(int nodes, AdjacencyMap adjacencyMap) {
+        this.nodes = nodes;
 
-        Graph graph = GraphFactory.create(verticesQuantity, adjacencyMap);
+        Graph graph = GraphFactory.create(nodes, adjacencyMap);
         setGraph(graph);
     }
 
     @Override
-    public int getVerticesQuantity() {
-        return verticesQuantity;
+    public int getNodes() {
+        return nodes;
     }
 
     @Override

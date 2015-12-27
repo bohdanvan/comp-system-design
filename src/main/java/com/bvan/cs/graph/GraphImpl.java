@@ -16,18 +16,18 @@ public final class GraphImpl implements Graph {
 
     private edu.princeton.cs.algorithms.Graph graph;
 
-    public GraphImpl(int verticesQuantity) {
-        graph = new edu.princeton.cs.algorithms.Graph(verticesQuantity);
+    public GraphImpl(int nodes) {
+        graph = new edu.princeton.cs.algorithms.Graph(nodes);
     }
 
-    public GraphImpl(int verticesQuantity, AdjacencyMap adjacencyMap) {
-        graph = new edu.princeton.cs.algorithms.Graph(verticesQuantity);
+    public GraphImpl(int nodes, AdjacencyMap adjacencyMap) {
+        graph = new edu.princeton.cs.algorithms.Graph(nodes);
 
-        fillGraph(verticesQuantity, adjacencyMap);
+        fillGraph(nodes, adjacencyMap);
     }
 
-    private void fillGraph(int verticesQuantity, AdjacencyMap adjacencyMap) {
-        for (int start = 0; start < verticesQuantity; start++) {
+    private void fillGraph(int nodes, AdjacencyMap adjacencyMap) {
+        for (int start = 0; start < nodes; start++) {
             for (Integer finish : adjacencyMap.getAdjacents(start)) {
                 addEdge(start, finish);
             }
@@ -35,7 +35,7 @@ public final class GraphImpl implements Graph {
     }
 
     @Override
-    public int getVerticesQuantity() {
+    public int getNodes() {
         return graph.V();
     }
 
@@ -74,13 +74,13 @@ public final class GraphImpl implements Graph {
 
     @Override
     public int[][] getAdjacencyMatrix() {
-        int verticesQuantity = graph.V();
-        int[][] adjacencyMatrix = new int[verticesQuantity][verticesQuantity];
+        int nodes = graph.V();
+        int[][] adjacencyMatrix = new int[nodes][nodes];
 
-        for (int startVertex = 0; startVertex < verticesQuantity; startVertex++) {
-            Iterable<Integer> finishVertices = graph.adj(startVertex);
+        for (int startVertex = 0; startVertex < nodes; startVertex++) {
+            Iterable<Integer> finishNodeIds = graph.adj(startVertex);
 
-            for (Integer finishVertex : finishVertices) {
+            for (Integer finishVertex : finishNodeIds) {
                 adjacencyMatrix[startVertex][finishVertex] = EDGE_EXISTS;
             }
         }
@@ -94,13 +94,13 @@ public final class GraphImpl implements Graph {
     }
 
     private EdgeWeightedDigraph toEdgeWeightedDigraph(edu.princeton.cs.algorithms.Graph graph) {
-        int verticesQuantity = graph.V();
-        EdgeWeightedDigraph digraph = new EdgeWeightedDigraph(verticesQuantity);
+        int nodes = graph.V();
+        EdgeWeightedDigraph digraph = new EdgeWeightedDigraph(nodes);
 
-        for (int startVertex = 0; startVertex < verticesQuantity; startVertex++) {
-            Iterable<Integer> finishVertices = graph.adj(startVertex);
+        for (int startVertex = 0; startVertex < nodes; startVertex++) {
+            Iterable<Integer> finishNodeIds = graph.adj(startVertex);
 
-            for (Integer finishVertex : finishVertices) {
+            for (Integer finishVertex : finishNodeIds) {
                 digraph.addEdge(new DirectedEdge(startVertex, finishVertex, 1.));
             }
         }
@@ -109,12 +109,12 @@ public final class GraphImpl implements Graph {
     }
 
     private int[][] minDistancesMatrix(EdgeWeightedDigraph digraph) {
-        int verticesQuantity = digraph.V();
+        int nodes = digraph.V();
         DijkstraAllPairsSP dijkstraAllPairsSP = new DijkstraAllPairsSP(digraph);
 
-        int[][] minDistancesMatrix = new int[verticesQuantity][verticesQuantity];
-        for (int startVertex = 0; startVertex < verticesQuantity; startVertex++) {
-            for (int finishVertex = startVertex + 1; finishVertex < verticesQuantity; finishVertex++) {
+        int[][] minDistancesMatrix = new int[nodes][nodes];
+        for (int startVertex = 0; startVertex < nodes; startVertex++) {
+            for (int finishVertex = startVertex + 1; finishVertex < nodes; finishVertex++) {
                 int distance = (int) dijkstraAllPairsSP.dist(startVertex, finishVertex);
 
                 minDistancesMatrix[startVertex][finishVertex] = distance;

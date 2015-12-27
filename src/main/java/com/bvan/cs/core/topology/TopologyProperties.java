@@ -4,17 +4,17 @@ package com.bvan.cs.core.topology;
  * @author bvanchuhov
  */
 public class TopologyProperties {
-    private int vertices;
+    private int nodes;
     private int diameter;
     private double averageDiameter;
     private int degree;
 
-    public int getVertices() {
-        return vertices;
+    public int getNodes() {
+        return nodes;
     }
 
-    public TopologyProperties setVertices(int vertices) {
-        this.vertices = vertices;
+    public TopologyProperties setNodes(int nodes) {
+        this.nodes = nodes;
         return this;
     }
 
@@ -46,7 +46,7 @@ public class TopologyProperties {
     }
 
     public int getPrice() {
-        return diameter * vertices * degree;
+        return diameter * nodes * degree;
     }
 
     public double getTopologicalTraffic() {
@@ -57,7 +57,7 @@ public class TopologyProperties {
     public String toString() {
         return String.format(
                 "n = %7d; S = %4d; D = %4d; D* = %10.3f; C = %10d; T = %7.3f",
-                getVertices(),
+                getNodes(),
                 getDegree(),
                 getDiameter(),
                 getAverageDiameter(),

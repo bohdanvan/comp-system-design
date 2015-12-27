@@ -24,11 +24,11 @@ public final class GraphUtils {
     }
 
     public static int diameter(int[][] minDistanceMatrix) {
-        int verticesQuantity = minDistanceMatrix.length;
+        int nodes = minDistanceMatrix.length;
         int maxDistance = Integer.MIN_VALUE;
 
-        for (int startVertex = 0; startVertex < verticesQuantity; startVertex++) {
-            for (int finishVertex = startVertex + 1; finishVertex < verticesQuantity; finishVertex++) {
+        for (int startVertex = 0; startVertex < nodes; startVertex++) {
+            for (int finishVertex = startVertex + 1; finishVertex < nodes; finishVertex++) {
                 int distance = minDistanceMatrix[startVertex][finishVertex];
                 maxDistance = Math.max(distance, maxDistance);
             }
@@ -38,16 +38,16 @@ public final class GraphUtils {
     }
 
     public static double averageDiameter(int[][] minDistanceMatrix) {
-        int verticesQuantity = minDistanceMatrix.length;
+        int nodes = minDistanceMatrix.length;
         int distancesHalfSum = 0;
 
-        for (int startVertex = 0; startVertex < verticesQuantity; startVertex++) {
-            for (int finishVertex = startVertex + 1; finishVertex < verticesQuantity; finishVertex++) {
+        for (int startVertex = 0; startVertex < nodes; startVertex++) {
+            for (int finishVertex = startVertex + 1; finishVertex < nodes; finishVertex++) {
                 int distance = minDistanceMatrix[startVertex][finishVertex];
                 distancesHalfSum += distance;
             }
         }
 
-        return (double) 2 * distancesHalfSum / (verticesQuantity * (verticesQuantity - 1));
+        return (double) 2 * distancesHalfSum / (nodes * (nodes - 1));
     }
 }

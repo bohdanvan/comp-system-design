@@ -11,14 +11,14 @@ import java.util.Set;
  * @author bvanchuhov
  */
 public class ClusterBean {
-    @SerializedName("verticesQuantity")
-    private int verticesQuantity;
+    @SerializedName("nodes")
+    private int nodes;
 
     @SerializedName("adjacencyMap")
     private Map<Integer, Set<Integer>> rawAdjacencyMap;
 
-    public int getVerticesQuantity() {
-        return verticesQuantity;
+    public int getNodes() {
+        return nodes;
     }
 
     public AdjacencyMap getAdjacencyMap() {
@@ -26,6 +26,6 @@ public class ClusterBean {
     }
 
     public Cluster toCluster() {
-        return new Cluster(verticesQuantity, getAdjacencyMap());
+        return new Cluster(nodes, getAdjacencyMap());
     }
 }

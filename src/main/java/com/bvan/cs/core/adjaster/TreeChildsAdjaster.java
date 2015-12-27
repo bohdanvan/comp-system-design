@@ -1,7 +1,7 @@
 package com.bvan.cs.core.adjaster;
 
 import com.bvan.common.Tuple;
-import com.bvan.cs.core.util.TreeUtils;
+import com.bvan.cs.core.util.tree.TreeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class TreeChildsAdjaster implements SimpleAdjaster {
         List<Tuple<Integer>> adjustedPairs = new ArrayList<>();
 
         for (int parent = 0; parent < nodesQuantity; parent++) {
-            int child = TreeUtils.getChild(parent, childIndex, degree);
+            int child = TreeUtils.child(parent, childIndex, degree);
 
             if (child < nodesQuantity) {
                 adjustedPairs.add(Tuple.of(parent, child));

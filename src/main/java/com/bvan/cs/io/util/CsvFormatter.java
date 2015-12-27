@@ -37,7 +37,7 @@ public final class CsvFormatter {
     }
 
     private static void appendTopologyProperties(StringBuilder sb, TopologyProperties properties) {
-        sb.append(properties.getVertices()).append(SEPARATOR)
+        sb.append(properties.getNodes()).append(SEPARATOR)
                 .append(properties.getDegree()).append(SEPARATOR)
                 .append(properties.getDiameter()).append(SEPARATOR)
                 .append(formatDouble(properties.getAverageDiameter())).append(SEPARATOR)

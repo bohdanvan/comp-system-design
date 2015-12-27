@@ -31,9 +31,9 @@ public final class AdjacencyMap {
     }
 
     private void strictAddEdge(int start, int end) {
-        Set<Integer> adjacentVertices = getAdjacents(start);
-        adjacentVertices.add(end);
-        map.put(start, adjacentVertices);
+        Set<Integer> adjacentNodeIds = getAdjacents(start);
+        adjacentNodeIds.add(end);
+        map.put(start, adjacentNodeIds);
     }
 
     @Override

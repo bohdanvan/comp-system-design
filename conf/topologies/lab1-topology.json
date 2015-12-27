@@ -1,7 +1,7 @@
 {
     "type": "ring",
     "cluster": {
-        "verticesQuantity": 6,
+        "nodes": 6,
         "adjacencyMap": {
             "0": [1, 2, 3],
             "1": [0, 2, 4],

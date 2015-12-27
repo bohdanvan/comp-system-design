@@ -6,7 +6,7 @@ import com.bvan.cs.graph.Graph;
  * @author bvanchuhov
  */
 public interface Topology {
-    int getVerticesQuantity();
+    int getNodes();
     int[][] getAdjacencyMatrix();
     int[][] getMinDistancesMatrix();
     Graph getGraph();

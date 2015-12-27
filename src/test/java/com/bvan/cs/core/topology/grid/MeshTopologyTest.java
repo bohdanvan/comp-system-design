@@ -33,7 +33,7 @@ public class MeshTopologyTest {
     public void testClusters1() throws Exception {
         topology.setLevel(0);
 
-        assertThat(topology.getVerticesQuantity(), is(1));
+        assertThat(topology.getNodes(), is(1));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class MeshTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(4));
+        assertThat(topology.getNodes(), is(4));
         assertThat(graph.getAdjacents(0), containsInAnyOrder(1, 2));
         assertThat(graph.getAdjacents(1), containsInAnyOrder(0, 3));
         assertThat(graph.getAdjacents(2), containsInAnyOrder(0, 3));
@@ -56,7 +56,7 @@ public class MeshTopologyTest {
 
         Graph graph = topology.getGraph();
 
-        assertThat(topology.getVerticesQuantity(), is(9));
+        assertThat(topology.getNodes(), is(9));
         assertThat(graph.getAdjacents(0), containsInAnyOrder(1, 2, 3, 6));
         assertThat(graph.getAdjacents(1), containsInAnyOrder(0, 2, 4, 7));
         assertThat(graph.getAdjacents(2), containsInAnyOrder(1, 0, 5, 8));

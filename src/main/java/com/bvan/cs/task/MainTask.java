@@ -33,8 +33,8 @@ public class MainTask {
     }
 
     private ExperimentTask createExperimentTask(ClusterBasedTopology topology) {
-        return new ExperimentTask(topology, conf.getMaxVerticesQuantity())
-                .setMaxVerticesForMinDistanceOutput(conf.getMaxVerticesForMinDistanceOutput());
+        return new ExperimentTask(topology, conf.getMaxNodes())
+                .setMaxNodesForMinDistanceOutput(conf.getMaxNodesForMinDistanceOutput());
     }
 
 
