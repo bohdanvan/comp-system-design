@@ -1,9 +1,9 @@
 package com.bvan.cs.core.topology.grid;
 
+import com.bvan.common.Tuple;
 import com.bvan.cs.core.Adjacency;
 import com.bvan.cs.core.AdjacencyMap;
-import com.bvan.common.Tuple;
-import com.bvan.cs.core.adjaster.Adjaster;
+import com.bvan.cs.core.connector.Connector;
 import com.bvan.cs.core.topology.ClusterBasedTopology;
 
 import java.util.Arrays;
@@ -23,12 +23,12 @@ public class GridTopology extends ClusterBasedTopology {
     protected AdjacencyMap rowAdjacencyMap;
     protected AdjacencyMap colAdjacencyMap;
 
-    protected Adjaster rowAdjaster;
-    protected Adjaster colAdjaster;
+    protected Connector rowConnector;
+    protected Connector colConnector;
 
-    public GridTopology(Adjaster rowAdjaster, Adjaster colAdjaster) {
-        this.rowAdjaster = rowAdjaster;
-        this.colAdjaster = colAdjaster;
+    public GridTopology(Connector rowConnector, Connector colConnector) {
+        this.rowConnector = rowConnector;
+        this.colConnector = colConnector;
     }
 
     @Override
@@ -37,11 +37,11 @@ public class GridTopology extends ClusterBasedTopology {
         List<Tuple<Integer>> colAdjastedClusters = new LinkedList<>();
 
         for (int row = 0; row <= level; row++) {
-            List<Tuple<Integer>> currentRowAdjastedClusters = rowAdjaster.adjustPairs(rowNodes(row, getSize()));
+            List<Tuple<Integer>> currentRowAdjastedClusters = rowConnector.connectPairs(rowNodes(row, getSize()));
             rowAdjastedClusters.addAll(currentRowAdjastedClusters);
         }
         for (int col = 0; col <= level; col++) {
-            List<Tuple<Integer>> currentColAdjastedClusters = colAdjaster.adjustPairs(colNodes(col, getSize()));
+            List<Tuple<Integer>> currentColAdjastedClusters = colConnector.connectPairs(colNodes(col, getSize()));
             colAdjastedClusters.addAll(currentColAdjastedClusters);
         }
 

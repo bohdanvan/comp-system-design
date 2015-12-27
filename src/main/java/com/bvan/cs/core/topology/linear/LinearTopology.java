@@ -1,9 +1,9 @@
 package com.bvan.cs.core.topology.linear;
 
+import com.bvan.common.Tuple;
 import com.bvan.cs.core.Adjacency;
 import com.bvan.cs.core.AdjacencyMap;
-import com.bvan.common.Tuple;
-import com.bvan.cs.core.adjaster.Adjaster;
+import com.bvan.cs.core.connector.Connector;
 import com.bvan.cs.core.topology.ClusterBasedTopology;
 import com.bvan.cs.core.topology.Topology;
 import com.bvan.cs.core.topology.TopologyFactory;
@@ -11,7 +11,6 @@ import com.bvan.cs.core.topology.TopologyFactory;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.bvan.requirements.Requirements.requiredNotNegativeArg;
 import static com.bvan.requirements.Requirements.requiredNotNullArg;
 
 /**
@@ -23,21 +22,21 @@ public class LinearTopology extends ClusterBasedTopology {
     protected int clustersQuantity = DEFAULT_CLUSTERS_QUANTITY;
     protected AdjacencyMap clusterAdjacencyMap;
 
-    protected Adjaster adjaster;
+    protected Connector adjaster;
 
-    public LinearTopology(Topology cluster, AdjacencyMap clusterAdjacencyMap, Adjaster adjaster) {
+    public LinearTopology(Topology cluster, AdjacencyMap clusterAdjacencyMap, Connector adjaster) {
         super(cluster);
         this.clusterAdjacencyMap = requiredNotNullArg(clusterAdjacencyMap);
         this.adjaster = requiredNotNullArg(adjaster);
     }
 
-    public LinearTopology(Adjaster adjaster) {
+    public LinearTopology(Connector adjaster) {
         this(TopologyFactory.simpleCluster(),  TopologyFactory.simpleAdjacencyMap(), adjaster);
     }
 
     @Override
     protected List<Adjacency> getClusterAdjacencies() {
-        List<Tuple<Integer>> adjustedClusters = adjaster.adjustPairs(0, clustersQuantity);
+        List<Tuple<Integer>> adjustedClusters = adjaster.connectPairs(0, clustersQuantity - 1);
 
         return Arrays.asList(new Adjacency(clusterAdjacencyMap, adjustedClusters));
     }

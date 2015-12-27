@@ -1,19 +1,12 @@
 package com.bvan.cs.core.topology;
 
 import com.bvan.cs.core.AdjacencyMap;
-import com.bvan.cs.core.adjaster.Adjaster;
-import com.bvan.cs.core.adjaster.AdjasterFactory;
-import com.bvan.cs.core.adjaster.LinearAdjaster;
-import com.bvan.cs.core.adjaster.RingAdjaster;
 import com.bvan.cs.core.topology.grid.GridTopology;
 import com.bvan.cs.core.topology.linear.LinearTopology;
 import com.bvan.cs.core.topology.tree.TreeLevelLinearTopology;
 import com.bvan.cs.core.topology.tree.TreeLevelPairTopology;
 
-import java.util.List;
-
-import static com.bvan.cs.core.adjaster.AdjasterFactory.linearAdjaster;
-import static com.bvan.cs.core.adjaster.AdjasterFactory.ringAdjaster;
+import static com.bvan.cs.core.connector.ConnectorFactory.*;
 
 /**
  * @author bvanchuhov
@@ -32,42 +25,46 @@ public final class TopologyFactory {
     }
 
     public static LinearTopology linearTopology(Topology cluster, AdjacencyMap clusterAdjacencyMap) {
-        return new LinearTopology(cluster, clusterAdjacencyMap, linearAdjaster());
+        return new LinearTopology(cluster, clusterAdjacencyMap, linearConnector());
     }
 
     public static LinearTopology linearTopology() {
-        return new LinearTopology(linearAdjaster());
+        return new LinearTopology(linearConnector());
     }
 
     public static LinearTopology ringTopology(Topology cluster, AdjacencyMap clusterAdjacencyMap) {
-        return new LinearTopology(cluster, clusterAdjacencyMap, ringAdjaster());
+        return new LinearTopology(cluster, clusterAdjacencyMap, ringConnector());
     }
 
     public static LinearTopology ringTopology() {
-        return new LinearTopology(ringAdjaster());
+        return new LinearTopology(ringConnector());
     }
 
     public static TreeLevelLinearTopology treeLevelLinearTopology() {
-        return new TreeLevelLinearTopology(linearAdjaster());
+        return new TreeLevelLinearTopology(linearConnector());
     }
 
     public static TreeLevelLinearTopology treeLevelRingTopology() {
-        return new TreeLevelLinearTopology(ringAdjaster());
+        return new TreeLevelLinearTopology(ringConnector());
+    }
+
+    public static TreeLevelLinearTopology treeLevelHypercubeTopology() {
+        return new TreeLevelLinearTopology(hypercubeConnector());
     }
 
     public static TreeLevelPairTopology treeLevelPairLinearTopology() {
-        return new TreeLevelPairTopology(linearAdjaster());
+        return new TreeLevelPairTopology(linearConnector());
     }
 
     public static TreeLevelPairTopology treeLevelPairRingTopology() {
-        return new TreeLevelPairTopology(ringAdjaster());
+        return new TreeLevelPairTopology(ringConnector());
     }
 
     public static GridTopology gridTopology() {
-        return new GridTopology(linearAdjaster(), linearAdjaster());
+        return new GridTopology(linearConnector(), linearConnector());
     }
 
     public static GridTopology meshTopology() {
-        return new GridTopology(ringAdjaster(), ringAdjaster());
+        return new GridTopology(ringConnector(), ringConnector());
     }
 }

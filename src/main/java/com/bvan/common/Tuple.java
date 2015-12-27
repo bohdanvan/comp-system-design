@@ -24,6 +24,10 @@ public final class Tuple<T> {
         return right;
     }
 
+    public Tuple<T> invert() {
+        return Tuple.of(right, left);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

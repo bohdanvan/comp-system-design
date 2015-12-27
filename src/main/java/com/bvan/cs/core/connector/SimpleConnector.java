@@ -1,4 +1,4 @@
-package com.bvan.cs.core.adjaster;
+package com.bvan.cs.core.connector;
 
 import com.bvan.common.Tuple;
 
@@ -7,6 +7,6 @@ import java.util.List;
 /**
  * @author bvanchuhov
  */
-public interface SimpleAdjaster {
+public interface SimpleConnector {
     List<Tuple<Integer>> adjustPairs();
 }

@@ -1,7 +1,7 @@
 package com.bvan.cs.core.topology.tree;
 
 import com.bvan.cs.core.AdjacencyMap;
-import com.bvan.cs.core.adjaster.Adjaster;
+import com.bvan.cs.core.connector.Connector;
 import com.bvan.cs.core.topology.TopologyFactory;
 import com.bvan.requirements.Requirements;
 
@@ -10,12 +10,12 @@ import com.bvan.requirements.Requirements;
  */
 public class TreeWithLevelTopology extends TreeTopology {
     protected AdjacencyMap levelAdjacencyMap;
-    protected Adjaster levelAdjaster;
+    protected Connector levelConnector;
 
-    public TreeWithLevelTopology(Adjaster levelAdjaster) {
+    public TreeWithLevelTopology(Connector levelConnector) {
         super();
         this.levelAdjacencyMap = TopologyFactory.simpleAdjacencyMap();
-        this.levelAdjaster = Requirements.requiredNotNullArg(levelAdjaster);
+        this.levelConnector = Requirements.requiredNotNullArg(levelConnector);
     }
 
     //----- Getters and Setters -----

@@ -1,22 +1,22 @@
-package com.bvan.cs.core.adjaster;
+package com.bvan.cs.core.connector;
 
 import com.bvan.common.Tuple;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
-public class TreeAllChildsAdjasterTest {
+public class TreeAllChildsConnectorTest {
     private static final int DEGREE = 2;
 
     @Test
     public void testTree_nodes1() throws Exception {
-        assertThat(new TreeAllChildsAdjaster(DEGREE, 1).adjustPairs(), containsInAnyOrder());
+        assertThat(new TreeAllChildsConnector(DEGREE, 1).adjustPairs(), containsInAnyOrder());
     }
 
     @Test
     public void testTree_nodes3() throws Exception {
-        assertThat(new TreeAllChildsAdjaster(DEGREE, 3).adjustPairs(), containsInAnyOrder(
+        assertThat(new TreeAllChildsConnector(DEGREE, 3).adjustPairs(), containsInAnyOrder(
                 Tuple.of(0, 1),
                 Tuple.of(0, 2)
         ));
@@ -24,7 +24,7 @@ public class TreeAllChildsAdjasterTest {
 
     @Test
     public void testTree_nodes7() throws Exception {
-        assertThat(new TreeAllChildsAdjaster(DEGREE, 7).adjustPairs(), containsInAnyOrder(
+        assertThat(new TreeAllChildsConnector(DEGREE, 7).adjustPairs(), containsInAnyOrder(
                 Tuple.of(0, 1),
                 Tuple.of(0, 2),
                 Tuple.of(1, 3),

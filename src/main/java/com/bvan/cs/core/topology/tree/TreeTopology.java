@@ -1,11 +1,11 @@
 package com.bvan.cs.core.topology.tree;
 
+import com.bvan.common.Tuple;
 import com.bvan.cs.core.Adjacency;
 import com.bvan.cs.core.AdjacencyMap;
-import com.bvan.common.Tuple;
+import com.bvan.cs.core.connector.TreeChildsConnector;
 import com.bvan.cs.core.topology.ClusterBasedTopology;
 import com.bvan.cs.core.topology.Topology;
-import com.bvan.cs.core.adjaster.TreeChildsAdjaster;
 import com.bvan.cs.core.topology.TopologyFactory;
 
 import java.util.Arrays;
@@ -44,7 +44,7 @@ public class TreeTopology extends ClusterBasedTopology {
         int treeDegree = getTreeDegree();
         for (int childIndex = 0; childIndex < treeDegree; childIndex++) {
             AdjacencyMap adjacencyMap = childrenAdjacencyMaps.get(childIndex);
-            List<Tuple<Integer>> adjustedClusters = new TreeChildsAdjaster(childIndex, treeDegree, getClustersQuantity()).adjustPairs();
+            List<Tuple<Integer>> adjustedClusters = new TreeChildsConnector(childIndex, treeDegree, getClustersQuantity()).adjustPairs();
 
             clusterAdjacencies.add(new Adjacency(adjacencyMap, adjustedClusters));
         }

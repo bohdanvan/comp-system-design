@@ -1,4 +1,4 @@
-package com.bvan.cs.core.adjaster;
+package com.bvan.cs.core.connector;
 
 import com.bvan.common.Tuple;
 import com.bvan.cs.core.util.tree.TreeUtils;
@@ -9,12 +9,12 @@ import java.util.List;
 /**
  * @author bvanchuhov
  */
-public class TreeChildsAdjaster implements SimpleAdjaster {
+public class TreeChildsConnector implements SimpleConnector {
     private int childIndex;
     private int degree;
     private int nodesQuantity;
 
-    public TreeChildsAdjaster(int childIndex, int degree, int nodesQuantity) {
+    public TreeChildsConnector(int childIndex, int degree, int nodesQuantity) {
         this.childIndex = childIndex;
         this.degree = degree;
         this.nodesQuantity = nodesQuantity;
