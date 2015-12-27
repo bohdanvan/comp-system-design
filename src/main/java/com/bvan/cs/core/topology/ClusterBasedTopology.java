@@ -1,8 +1,9 @@
 package com.bvan.cs.core.topology;
 
+import com.bvan.common.Tuple;
 import com.bvan.cs.core.Adjacency;
 import com.bvan.cs.core.AdjacencyMap;
-import com.bvan.common.Tuple;
+import com.bvan.cs.core.util.cluster.ClusterTopologyInfo;
 import com.bvan.cs.graph.Graph;
 import com.bvan.cs.graph.GraphFactory;
 import com.bvan.requirements.Requirements;
@@ -16,6 +17,7 @@ import static com.bvan.requirements.Requirements.requiredNotNullArg;
  * @author bvanchuhov
  */
 public abstract class ClusterBasedTopology extends TopologyImpl {
+
     protected Topology cluster;
 
     public ClusterBasedTopology(Topology cluster) {
@@ -28,7 +30,7 @@ public abstract class ClusterBasedTopology extends TopologyImpl {
 
     @Override
     public int getNodes() {
-        return getClustersQuantity() * cluster.getNodes();
+        return getClusters() * cluster.getNodes();
     }
 
     @Override
@@ -40,7 +42,7 @@ public abstract class ClusterBasedTopology extends TopologyImpl {
     }
 
     private Graph duplicateCluster() {
-        int clustersQuantity = getClustersQuantity();
+        int clustersQuantity = getClusters();
 
         Graph graph = GraphFactory.create(getNodes());
 
@@ -116,7 +118,7 @@ public abstract class ClusterBasedTopology extends TopologyImpl {
         setLevel(getLevel() + 1);
     }
 
-    public abstract int getClustersQuantity();
+    public abstract int getClusters();
 
     //----- Getters and Setters -----
 
@@ -127,5 +129,9 @@ public abstract class ClusterBasedTopology extends TopologyImpl {
     public void setCluster(Topology cluster) {
         this.cluster = requiredNotNullArg(cluster);
         clearCache();
+    }
+
+    public ClusterTopologyInfo getClusterTopologyInfo() {
+        return new ClusterTopologyInfo(getClusters(), cluster.getNodes());
     }
 }

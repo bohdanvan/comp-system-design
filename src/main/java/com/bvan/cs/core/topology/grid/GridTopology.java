@@ -67,7 +67,7 @@ public class GridTopology extends ClusterBasedTopology {
     }
 
     @Override
-    public int getClustersQuantity() {
+    public int getClusters() {
         return (int) Math.pow(level + 1, 2);
     }
 

@@ -44,7 +44,7 @@ public class TreeTopology extends ClusterBasedTopology {
         int treeDegree = getTreeDegree();
         for (int childIndex = 0; childIndex < treeDegree; childIndex++) {
             AdjacencyMap adjacencyMap = childrenAdjacencyMaps.get(childIndex);
-            List<Tuple<Integer>> adjustedClusters = new TreeChildsConnector(childIndex, treeDegree, getClustersQuantity()).adjustPairs();
+            List<Tuple<Integer>> adjustedClusters = new TreeChildsConnector(childIndex, treeDegree, getClusters()).adjustPairs();
 
             clusterAdjacencies.add(new Adjacency(adjacencyMap, adjustedClusters));
         }
@@ -67,7 +67,7 @@ public class TreeTopology extends ClusterBasedTopology {
     }
 
     @Override
-    public int getClustersQuantity() {
+    public int getClusters() {
         switch (levelIncreaseMod) {
             case ALL_CHILDS:
                 return (int) Math.pow(getTreeDegree(), level + 1) - 1;

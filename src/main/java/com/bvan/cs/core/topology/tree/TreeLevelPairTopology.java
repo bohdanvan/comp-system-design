@@ -22,7 +22,7 @@ public class TreeLevelPairTopology extends TreeWithLevelTopology {
         List<Adjacency> clusterAdjacencies = super.getClusterAdjacencies();
 
         List<Tuple<Integer>> adjustedClusters = new LinkedList<>();
-        for (int clusterA = 1, last = getClustersQuantity() - 1; clusterA < last; clusterA += 2) {
+        for (int clusterA = 1, last = getClusters() - 1; clusterA < last; clusterA += 2) {
             adjustedClusters.addAll(levelConnector.connectPairs(clusterA, clusterA + 1));
         }
 

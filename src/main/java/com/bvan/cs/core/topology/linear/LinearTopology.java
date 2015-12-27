@@ -52,7 +52,7 @@ public class LinearTopology extends ClusterBasedTopology {
     }
 
     @Override
-    public int getClustersQuantity() {
+    public int getClusters() {
         return clustersQuantity;
     }
 
