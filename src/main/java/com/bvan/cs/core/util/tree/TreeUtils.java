@@ -3,9 +3,7 @@ package com.bvan.cs.core.util.tree;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bvan.requirements.Requirements.requiredCorrectIndex;
-import static com.bvan.requirements.Requirements.requiredNotNegativeArg;
-import static com.bvan.requirements.Requirements.requiredPositiveArg;
+import static com.bvan.requirements.Requirements.*;
 
 /**
  * @author bvanchuhov
@@ -46,7 +44,7 @@ public final class TreeUtils {
         int level = level(nodeId, degree);
         int levelFirstNodeId = levelFirstNodeId(level, degree);
 
-        return levelFirstNodeId - nodeId;
+        return nodeId - levelFirstNodeId;
     }
 
     public static List<Integer> levelNodeIds(int level, int degree) {

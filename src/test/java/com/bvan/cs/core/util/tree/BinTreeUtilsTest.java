@@ -56,7 +56,7 @@ public class BinTreeUtilsTest {
         assertThat(levelNodeId(4), is(1));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testLevelNodeId_incorrect_negativeNodeId() throws Exception {
         assertThat(levelNodeId(-1), is(0));
     }
