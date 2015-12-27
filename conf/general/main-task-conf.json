@@ -1,12 +1,12 @@
 {
-    "topologyConfPath": "conf/topologies/lesya-lab3-topology.json",
+    "topologyConfPath": "conf/topologies/cw-topology.json",
 
-    "outputFile": "lab3-topology",
-    "outputDir": "results/lesya",
+    "outputFile": "cw-topology",
+    "outputDir": "results/bohdan",
     "outputFormat": "csv",
 
-    "maxNodes": 500,
+    "maxNodes": 1000,
 
     "consoleOutput": true,
-    "fileOutput": false
+    "fileOutput": true
 }

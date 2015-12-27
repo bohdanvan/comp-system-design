@@ -13,6 +13,7 @@ import com.google.gson.Gson;
  * @author bvanchuhov
  */
 public final class JsonTopologyFactory {
+
     private JsonTopologyFactory() {
     }
 
@@ -32,7 +33,9 @@ public final class JsonTopologyFactory {
             case "tree-level-ring":
                 return (T) createTreeLevelRingTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
             case "tree-level-pair-linear":case "tree-level-pair":
-                return (T) creteTreeLevelPairLinearTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
+                return (T) createTreeLevelPairLinearTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
+            case "tree-level-hypercube":
+                return (T) createTreeLevelHypercubeTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
             case "tree-level-pair-ring":
                 return (T) createTreeLevelPairRingTopology(new Gson().fromJson(json, TreeWithLevelConfBean.class));
             case "grid":
@@ -75,7 +78,13 @@ public final class JsonTopologyFactory {
         return topology;
     }
 
-    private static TreeLevelPairTopology creteTreeLevelPairLinearTopology(TreeWithLevelConfBean confBean) {
+    private static TreeLevelLinearTopology createTreeLevelHypercubeTopology(TreeWithLevelConfBean confBean) {
+        TreeLevelLinearTopology topology = TopologyFactory.treeLevelHypercubeTopology();
+        initTreeWithLevelTopology(topology, confBean);
+        return topology;
+    }
+
+    private static TreeLevelPairTopology createTreeLevelPairLinearTopology(TreeWithLevelConfBean confBean) {
         TreeLevelPairTopology topology = TopologyFactory.treeLevelPairLinearTopology();
         initTreeWithLevelTopology(topology, confBean);
         return topology;
