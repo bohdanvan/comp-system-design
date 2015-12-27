@@ -1,13 +1,9 @@
-package com.bvan.cs.core.util;
-
-import com.bvan.requirements.Requirements;
+package com.bvan.cs.core.util.grid;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bvan.requirements.Requirements.requiredCorrectIndex;
-import static com.bvan.requirements.Requirements.requiredCorrectRange;
-import static com.bvan.requirements.Requirements.requiredNotNegativeArg;
+import static com.bvan.requirements.Requirements.*;
 
 /**
  * @author bvanchuhov

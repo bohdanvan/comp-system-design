@@ -1,12 +1,10 @@
-package com.bvan.cs.core.util;
+package com.bvan.cs.core.util.grid;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import static com.bvan.cs.core.util.GridUtils.colNodes;
-import static com.bvan.cs.core.util.GridUtils.rangeNodes;
-import static com.bvan.cs.core.util.GridUtils.rowNodes;
-import static org.hamcrest.CoreMatchers.*;
+import static com.bvan.cs.core.util.grid.GridUtils.colNodes;
+import static com.bvan.cs.core.util.grid.GridUtils.rangeNodes;
+import static com.bvan.cs.core.util.grid.GridUtils.rowNodes;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.*;
 
