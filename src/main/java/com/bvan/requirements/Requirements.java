@@ -1,80 +1,80 @@
 package com.bvan.requirements;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 
 /**
  * @author bvanchuhov
  */
 public final class Requirements {
+
+    public static final String DEFAULT_ARG_NAME = "arg";
+
     private Requirements() {
     }
 
-    public static int requiredPositiveArg(int x, String message) {
-        if (x <= 0) {
-            throw new IllegalArgumentException(message);
+    public static int requiredPositiveArg(int arg, String argName) {
+        if (arg <= 0) {
+            throw new IllegalArgumentException(MessageFormat.format("required positive {0}, but actually {0} = {1}", argName, arg));
         }
-        return x;
+        return arg;
     }
 
-    public static int requiredPositiveArg(int x) {
-        if (x <= 0) {
-            throw new IllegalArgumentException("required positive arg");
-        }
-        return x;
+    public static int requiredPositiveArg(int arg) {
+        return requiredPositiveArg(arg, DEFAULT_ARG_NAME);
     }
 
-    public static int requiredNotNegativeArg(int x, String message) {
-        if (x < 0) {
-            throw new IllegalArgumentException(message);
+    public static int requiredNotNegativeArg(int arg, String argName) {
+        if (arg < 0) {
+            throw new IllegalArgumentException(MessageFormat.format("required not negative {0}, but actually {0} = {1}", argName, arg));
         }
-        return x;
+        return arg;
     }
 
-    public static int requiredNotNegativeArg(int x) {
-        if (x < 0) {
-            throw new IllegalArgumentException("required not negative arg");
-        }
-        return x;
+    public static int requiredNotNegativeArg(int arg) {
+        return requiredNotNegativeArg(arg, DEFAULT_ARG_NAME);
     }
 
-    public static <T> T requiredNotNullArg(T obj, String message) {
-        if (obj == null) {
-            throw new IllegalArgumentException(message);
+    public static <T> T requiredNotNullArg(T arg, String argName) {
+        if (arg == null) {
+            throw new IllegalArgumentException(MessageFormat.format("{0} is null", argName));
         }
-        return obj;
+        return arg;
     }
 
-    public static <T> T requiredNotNullArg(T obj) {
-        if (obj == null) {
-            throw new IllegalArgumentException("required not null value");
-        }
-        return obj;
+    public static <T> T requiredNotNullArg(T arg) {
+        return requiredNotNullArg(arg, DEFAULT_ARG_NAME);
     }
 
-    public static <C extends Collection<?>> C requiredNotEmptyArg(C collection) {
-        if (collection == null || collection.isEmpty()) {
-            throw new IllegalArgumentException("required not empty collection");
+    public static int requiredCorrectIndex(int index, int size, String argName) {
+        requiredNotNegativeArg(size, "size for " + argName);
+
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException(MessageFormat.format("{0} should be in the range [0, {1}], but actually {0} = {2}", argName, size - 1, index));
         }
-        return collection;
+        return index;
     }
 
-    public static <C extends Collection<?>> C requiredNotEmptyState(C collection) {
-        if (collection == null || collection.isEmpty()) {
-            throw new IllegalStateException("required not empty collection");
-        }
-        return collection;
+    public static int requiredCorrectIndex(int index, int size) {
+        return requiredCorrectIndex(index, size, "index");
     }
 
     public static <T extends Comparable<T>> void requiredCorrectRange(T from, T to) {
         if (from.compareTo(to) >= 0) {
-            throw new IllegalArgumentException("required correct range, but actually " + from + " >= " + to);
+            throw new IllegalArgumentException(MessageFormat.format("required correct range, but actually {0} >= {1)", from, to));
         }
     }
 
-    public static int requiredCorrectIndex(int index, int size) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("index should be in the range [0, " + (size - 1) + "], but actually " + index);
+    public static <C extends Collection<?>> C requiredNotEmptyArg(C collection, String collectionName) {
+        requiredNotNullArg(collection, collectionName);
+
+        if (collection.isEmpty()) {
+            throw new IllegalArgumentException(MessageFormat.format("{0} is empty", collectionName));
         }
-        return index;
+        return collection;
+    }
+
+    public static <C extends Collection<?>> C requiredNotEmptyArg(C collection) {
+        return requiredNotEmptyArg(collection, "collection");
     }
 }
