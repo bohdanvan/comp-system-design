@@ -12,6 +12,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 
 public class ComplexRingTopologyTest {
+
     public static final String FILE_NAME = "conf/topologies/lab1-topology.json";
 
     private ClusterBasedTopology topology;
@@ -24,7 +25,7 @@ public class ComplexRingTopologyTest {
     }
 
     @Test
-    public void testClusters1() throws Exception {
+    public void testTopology_level0() throws Exception {
         topology.setLevel(0);
 
         Graph graph = topology.getGraph();
@@ -41,7 +42,7 @@ public class ComplexRingTopologyTest {
     }
 
     @Test
-    public void testClusters2() throws Exception {
+    public void testTopology_level1() throws Exception {
         topology.setLevel(1);
 
         Graph graph = topology.getGraph();

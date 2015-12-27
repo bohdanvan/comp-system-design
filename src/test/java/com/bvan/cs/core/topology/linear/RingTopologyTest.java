@@ -18,6 +18,7 @@ import static org.junit.Assert.assertThat;
  * @author bvanchuhov
  */
 public class RingTopologyTest {
+
     private ClusterBasedTopology topology;
 
     @Before
@@ -29,7 +30,7 @@ public class RingTopologyTest {
     }
 
     @Test
-    public void testClusters1() throws Exception {
+    public void testTopology_level0() throws Exception {
         topology.setLevel(0);
 
         Graph graph = topology.getGraph();
@@ -39,7 +40,7 @@ public class RingTopologyTest {
     }
 
     @Test
-    public void testClusters2() throws Exception {
+    public void testTopology_level1() throws Exception {
         topology.setLevel(1);
 
         Graph graph = topology.getGraph();
@@ -48,7 +49,7 @@ public class RingTopologyTest {
     }
 
     @Test
-    public void testClusters3() throws Exception {
+    public void testTopology_level2() throws Exception {
         topology.setLevel(2);
 
         Graph graph = topology.getGraph();

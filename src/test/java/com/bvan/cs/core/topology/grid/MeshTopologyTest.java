@@ -10,9 +10,10 @@ import static com.bvan.cs.core.topology.TopologyFactory.simpleAdjacencyMap;
 import static com.bvan.cs.core.topology.TopologyFactory.simpleCluster;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class MeshTopologyTest {
+
     private ClusterBasedTopology topology;
 
     @Before
@@ -30,14 +31,14 @@ public class MeshTopologyTest {
     }
 
     @Test
-    public void testClusters1() throws Exception {
+    public void testTopology_level0() throws Exception {
         topology.setLevel(0);
 
         assertThat(topology.getNodes(), is(1));
     }
 
     @Test
-    public void testClusters2() throws Exception {
+    public void testTopology_level1() throws Exception {
         topology.setLevel(1);
 
         Graph graph = topology.getGraph();
@@ -51,7 +52,7 @@ public class MeshTopologyTest {
     }
 
     @Test
-    public void testClusters3() throws Exception {
+    public void testTopology_level2() throws Exception {
         topology.setLevel(2);
 
         Graph graph = topology.getGraph();
