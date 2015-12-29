@@ -33,6 +33,22 @@ public final class BinTreeId {
         return BinTreeUtils.levelNodes(getLevel());
     }
 
+    public boolean hasChilds() {
+        return BinTreeUtils.hasChilds(nodeId, nodes);
+    }
+
+    public boolean hasParent() {
+        return BinTreeUtils.hasParent(nodeId);
+    }
+
+    public boolean isLeftChild() {
+        return BinTreeUtils.isLeftChild(nodeId);
+    }
+
+    public boolean isRightChild() {
+        return BinTreeUtils.isRightChild(nodeId);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

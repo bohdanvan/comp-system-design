@@ -98,4 +98,19 @@ public final class TreeUtils {
 
         return ((nodeId + 1) * degree + childId) - 1;
     }
+
+    public static boolean hasChilds(int nodeId, int degree, int nodes) {
+        return !childIds(nodeId, degree, nodes).isEmpty();
+    }
+
+    public static boolean hasParent(int nodeId) {
+        return nodeId != 0;
+    }
+
+    public static int parent(int nodeId, int degree) {
+        if (!hasParent(nodeId)) {
+            return -1;
+        }
+        return (nodeId - 1) / degree;
+    }
 }

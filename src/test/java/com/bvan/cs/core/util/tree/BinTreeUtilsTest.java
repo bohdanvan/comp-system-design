@@ -118,4 +118,21 @@ public class BinTreeUtilsTest {
     public void testLevelNodes_level3() throws Exception {
         assertThat(levelNodeIds(3), contains(7, 8, 9, 10, 11, 12, 13, 14));
     }
+
+    //----- parent() -----
+
+    @Test
+    public void testParent_correct_leftChild() throws Exception {
+        assertThat(parent(7), is(3));
+    }
+
+    @Test
+    public void testParent_correct_rightChilde() throws Exception {
+        assertThat(parent(8), is(3));
+    }
+
+    @Test
+    public void testParent_incorrect() throws Exception {
+        assertThat(parent(0), is(-1));
+    }
 }

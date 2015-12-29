@@ -43,4 +43,27 @@ public final class BinTreeUtils {
     public static int child(int nodeId, BinTreeChild binTreeChild) {
         return TreeUtils.child(nodeId, binTreeChild.getIndex(), DEGREE);
     }
+
+    public static boolean hasChilds(int nodeId, int nodes) {
+        return TreeUtils.hasChilds(nodeId, DEGREE, nodes);
+    }
+
+    public static boolean hasParent(int nodeId) {
+        return TreeUtils.hasParent(nodeId);
+    }
+
+    public static boolean isLeftChild(int nodeId) {
+        return nodeId % DEGREE == 1;
+    }
+
+    public static boolean isRightChild(int nodeId) {
+        return nodeId % DEGREE == 0;
+    }
+
+    public static int parent(int nodeId) {
+        if (!hasParent(nodeId)) {
+            return -1;
+        }
+        return (nodeId - 1) / DEGREE;
+    }
 }
